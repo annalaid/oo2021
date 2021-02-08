@@ -3,20 +3,20 @@ public class First{
         //System.out.println(args.length);
         int[] numberArray = new int[5];
     
-        string[] stringArray = new String[5];
-        string[] greetingsArray = new String[]{ "Hello", "world", "!" };
+        String[] stringArray = new String[11];
+        String[] greetingsArray = new String[]{ "Hello", "world", "!" };
 
         String name = "Anna-Stiina";
         int year = 2021;
 
-        int myInt = Integer.MAX_VALUE;
+        /* int myInt = Integer.MAX_VALUE;
         long myLong = Long.MAX_VALUE;
         byte myBait = Byte.MIN_VALUE; //127
         short myShort = Short.MAX_VALUE; 
         double myDouble = 3.4;
         float myFloat = 3.4f;
         boolean flag = true; // false
-        char character = 'F';
+        char character = 'F'; */
 
 
         // fori tsükkel
@@ -49,7 +49,7 @@ public class First{
         System.out.println("Test two");
         System.out.print("\n");
 
-        String hello = "Hello world!";
+        /* String hello = "Hello world!"; */
     }
 }
 
