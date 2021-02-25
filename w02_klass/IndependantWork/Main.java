@@ -1,6 +1,5 @@
 package IndependantWork;
 
-
 public class Main {
     public static void main(String[] args) {
         Dessert dessert1 = new Dessert("Cake", DessertType.Cake);
@@ -19,5 +18,8 @@ public class Main {
             dessert3.name + " " + dessert3.many + " pieces");
 
         System.out.println("Cart includes " + dessert1.name + " and " + dessert2.name + " and " + dessert3.name);
+
+        dessert1 = new Dessert("Donuts", DessertType.Cake);
+        System.out.println(dessert1.name);
     }
 }
