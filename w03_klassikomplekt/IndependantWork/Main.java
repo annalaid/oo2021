@@ -1,6 +1,7 @@
 package IndependantWork;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,9 +26,15 @@ public class Main {
         storage.removeFridges("Torpedo");
         System.out.println(storage);
 
-        String lause = "Do you even lift?";
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Sisesta lause, mida soovid muuta: ");
+        String lause = input.nextLine();
 
         System.out.println(formatInputString(lause));
+        input.close();
+
+        /*String lause = "Do you even lift?";*/
     }
 
     private static String formatInputString(String input) {
