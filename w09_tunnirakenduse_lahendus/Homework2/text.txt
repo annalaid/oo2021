@@ -1,0 +1,8 @@
+Anna,5,14
+Sophia,6,27
+Olivia,5,15
+Riley,3,19
+Emma,6,7
+Tony,8,16
+Thomas,3,9
+Albert,7,2

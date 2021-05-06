@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: lightpink;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+th, td, tr {
+    text-align: center;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+p{
+	text-align: center;
+	font-size: 14px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid rgba(112, 112, 112, 0.1);
+}
+
+h1{
+    font-size: 24px;
+	text-align: center;
+	padding: 15px;
+}
+
+button {
+    text-transform: uppercase;
+    text-decoration: underline;
+    background-color: lightcyan;
+    color: black;
+    border-radius: 20px;
+    border: 1px solid gray;
+    align-content: center;
+}

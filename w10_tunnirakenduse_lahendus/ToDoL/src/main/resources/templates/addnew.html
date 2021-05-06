@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/todoAdd.css">
+    <title>Tegemist vajavad kodutööd</title>
+</head>
+<body>
+    <h1>Add to ToDo list:</h1>
+    <form action="#" th:action="@{/addNew}" th:object="${todo}" method="post">
+    <label for="subName">Aine*</label>
+    <input type="text" name="subName" id="subName" th:field="*{subName}">
+    <span th:if="${#fields.hasErrors('subName')}" th:errors="*{subName}"></span><br/>
+    <label for="desc">Kodutöö*</label>
+    <input type="text" name="desc" id="desc" th:field="*{desc}">
+    <span th:if="${#fields.hasErrors('desc')}" th:errors="*{desc}"></span><br/>
+    <label for="desc">Tähtaeg</label>
+    <input type="text" name="date" id="date" th:field="*{date}"><br>
+    <button type="submit">Lisa ülesanne</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tegemist vajavad ülesanded:</title>
+    </head>
+    <body>
+    <div th:switch="${users}">
+        <h2 th:case="null">Kõik tööd on tehtud</h2>
+        <div th:case="*">
+        <table>
+            <thead>
+            <tr>
+                <th>Aine</th>
+                <th>Ülesanne</th>
+                <th>Muuda</th>
+                <th>Kustuta</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.subName}"></td>
+                <td th:text="${user.desc}"></td>
+                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <p><a href="/signup">Lisa uus ülesanne</a></p>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package Homework;
+
 
 public class Vehicle extends Scooter {
 

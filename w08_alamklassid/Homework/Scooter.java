@@ -1,4 +1,4 @@
-package Homework;
+
 
 public abstract class Scooter {
     

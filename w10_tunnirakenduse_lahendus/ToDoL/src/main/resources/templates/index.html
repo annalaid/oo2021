@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/todoIndex.css">
+    <title>Tegemist vajavad ülesanded:</title>
+    </head>
+    <body>
+    <div th:switch="${todos}">
+        <h2 th:case="null">Kõik tööd on tehtud</h2>
+        <div th:case="*">
+        <table>
+            <thead>
+            <tr>
+                <th>Aine</th>
+                <th>Ülesanne</th>
+                <th>Kuupäev</th>
+                <th>Muuda</th>
+                <th>Kustuta</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="todo : ${todos}">
+                <td th:text="${todo.subName}"></td>
+                <td th:text="${todo.desc}"></td>
+                <td th:text="${todo.date}"></td>
+                <td><a th:href="@{/edit/{id}(id=${todo.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${todo.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <p><button class="add"><a href="/addnew">Lisa uus ülesanne</a></button></p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+@AutoWired - Autowiring feature of spring framework enables you to inject the object dependency implicitly. It internally uses setter or constructor injection. Autowiring can't be used to inject primitive and string values. It works with reference only.
+@Controller - This is simply a specialization of the @Component class, which allows us to auto-detect implementation classes through the classpath scanning. We typically use @Controller in combination with a @RequestMapping annotation for request handling methods.
+@Repository - Repository is a Spring annotation that indicates that the decorated class is a repository. A repository is a mechanism for encapsulating storage, retrieval, and search behavior which emulates a collection of objects.
+@GetMapping - Annotation for mapping HTTP GET requests onto specific handler methods.
+@PostMapping - annotated methods handle the HTTP POST requests matched with given URI expression.
+@RequestParam - annotated parameters get linked to specific Servlet request parameters. Parameter values are converted to the declared method argument type. This annotation indicates that a method parameter should be bound to a web request parameter.
+@PathVariable - a Spring annotation which indicates that a method parameter should be bound to a URI template variable.
+@Valid - The @Valid annotation will tell spring to go and validate the data passed into the controller by checking to see that the integer numberBetweenOneAndTen is between 1 and 10 inclusive because of those min and max annotations.
+DAO - a pattern that provides an abstract interface to some type of database or other persistence mechanism.
+JPA - JPA is just a specification that facilitates object-relational mapping to manage relational data in Java applications. It provides a platform to work directly with objects instead of using SQL statements.
+CRUD - Create, read, update and delete - is a software architectural style regarding the four basic operations of persistent storage.
+H2 - is a relational database management system written in Java. It can be embedded in Java applications or run in client-server mode.
