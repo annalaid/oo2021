@@ -23,9 +23,12 @@ public class Main {
         }
         if(lineDatas!=null) {
             for (String string : lineDatas) {
-                formattedStrings.add(string.replace("!.,", ""));
+                formattedStrings.add(string.replaceAll("[\\-\\+\\.\\^:,]", ""));
             }
-            System.out.println(formattedStrings);
+        }
+
+        for (String string : formattedStrings) {
+            System.out.println(string.substring(string.length() - 1));
         }
 
         readFile.close();
