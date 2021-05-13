@@ -1,12 +1,13 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -14,13 +15,12 @@ public class Main {
 
         FileReader readFile = new FileReader(loremIpsum);
         BufferedReader readText = new BufferedReader(readFile);
-        
+
         String[] lineDatas = null;
         String line = readText.readLine();
         List<String> formattedStrings = new ArrayList<>();
         List<String> lastLetters= new ArrayList<>();
-        Map<String, Integer> letterCount = new HashMap<>();
-        
+
         while (line != null){
             lineDatas = line.split(" ");
             line = readText.readLine();
@@ -31,41 +31,67 @@ public class Main {
 
         if(lineDatas!=null) {
             for (String string : lineDatas) {
-                formattedStrings.add(string.replaceAll("[\\-\\+\\.\\^:,]", ""));
+                formattedStrings.add(string.replaceAll("[\\-+.^:,]", ""));
             }
         }
         System.out.println("Kõik sõnad: " + formattedStrings);
 
+        Map<String, List<String>> letterWithCorrespondingWords = new HashMap<>();
         for (String string : formattedStrings) {
-            lastLetters.add(string.substring(string.length() - 1));
+            String lastLetterOfString = string.substring(string.length() - 1);
+            if( letterWithCorrespondingWords.containsKey( lastLetterOfString ) ) {
+                addExistingMapEntryIfKeyFound( letterWithCorrespondingWords, string, lastLetterOfString );
+            } else {
+                addNewMapEntryIfNoKeyFound( letterWithCorrespondingWords, string, lastLetterOfString );
+            }
+            lastLetters.add(lastLetterOfString);
         }
         System.out.println("Kõik viimased tähed: " + lastLetters);
+        System.out.println(letterWithCorrespondingWords);
 
-        for (String string : lastLetters) {
-            int CountInList = 0;
-            for(int i = 0; i < string.length(); i++){
-                if(string.toUpperCase().charAt(i) == "A".charAt(0)){
-                    CountInList++;
-                }
-                if(string.toUpperCase().charAt(i) == "C".charAt(0)){
-                    CountInList++;
-                }
-                if(string.toUpperCase().charAt(i) == "D".charAt(0)){
-                    CountInList++;
-                }
-                if(string.toUpperCase().charAt(i) == "E".charAt(0)){
-                    CountInList++;
-                }
-                if(string.toUpperCase().charAt(i) == "G".charAt(0)){
-                    CountInList++;
-                }
-                if(string.toUpperCase().charAt(i) == "T".charAt(0)){
-                    CountInList++;
-                }
+        for(String keyValue : letterWithCorrespondingWords.keySet() ) {
+            System.out.println("Kokku on " + keyValue + " tähe kohta " + letterWithCorrespondingWords.get(keyValue).size() + " sõna");
+            
+            File words = new File(keyValue + ".html");
+            if (!words.exists()){
+                words.createNewFile();
             }
-                letterCount.put(string, CountInList);
+            FileWriter fw = new FileWriter(words);
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println("<html><body>");
+            for (String string : letterWithCorrespondingWords.get(keyValue)) {
+                pw.println("<p>" + string + "</p>");
+            }
+            pw.println("</body></html>");
+            pw.close();
         }
+        createHTMLSourcePage(letterWithCorrespondingWords);
+    }
 
-        System.out.println(letterCount);
+    private static void createHTMLSourcePage(Map<String, List<String>> letterWithCorrespondingWords) throws IOException{
+        File words = new File("source.html");
+        if (!words.exists()){
+            words.createNewFile();
+        }
+        FileWriter fw = new FileWriter(words);
+        PrintWriter pw = new PrintWriter(fw);
+        pw.println("<html><body>");
+        for (String string : letterWithCorrespondingWords.keySet()) {
+            pw.println("<p><a href='" + string + ".html'>" + string.toUpperCase() + ": " + letterWithCorrespondingWords.get(string).size() + "</a></p>");
+        }
+        pw.println("</body></html>");
+        pw.close();
+    }
+
+    private static void addExistingMapEntryIfKeyFound( Map<String, List<String>> letterWithCorrespondingWords, String string, String lastLetterOfString ){
+        List<String> existingList = letterWithCorrespondingWords.get( lastLetterOfString );
+        existingList.add( string );
+        letterWithCorrespondingWords.put( lastLetterOfString, existingList );
+    }
+
+    private static void addNewMapEntryIfNoKeyFound( Map<String, List<String>> letterWithCorrespondingWords, String string, String lastLetterOfString ){
+        List<String> newArray = new ArrayList<>();
+        newArray.add( string );
+        letterWithCorrespondingWords.put( lastLetterOfString, newArray );
     }
 }
